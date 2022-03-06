@@ -1,2 +1,18 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.brand-logo {
+    height: 50%;
+    width: auto;
+}
+.color1 {color: #74222c;}
+.color2 {color: #973534;}
+.color3 {color: #d0583f;}
+.color4 {color: #ff8e58;}
+.color5 {color: #ffd66c;}
+
+.background-color1 {background-color: #74222c;}
+.background-color2 {background-color: #973534;}
+.background-color3 {background-color: #d0583f;}
+.background-color4 {background-color: #ff8e58;}
+.background-color5 {background-color: #ffd66c;}
