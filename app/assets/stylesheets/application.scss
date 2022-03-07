@@ -1,18 +1,65 @@
-// Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
-
-.brand-logo {
-    height: 50%;
-    width: auto;
-}
-.color1 {color: #74222c;}
-.color2 {color: #973534;}
-.color3 {color: #d0583f;}
-.color4 {color: #ff8e58;}
-.color5 {color: #ffd66c;}
-
-.background-color1 {background-color: #74222c;}
-.background-color2 {background-color: #973534;}
-.background-color3 {background-color: #d0583f;}
-.background-color4 {background-color: #ff8e58;}
-.background-color5 {background-color: #ffd66c;}
+ /*
+ *= require_tree .
+ *= require_self
+ */
+ 
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import "bootstrap";
+ .brand-logo {
+     height: 50%;
+     width: auto;
+ }
+ 
+ .color1 {
+     color: #335c67;
+ }
+ 
+ .color2 {
+     color: #fff3b0;
+ }
+ 
+ .color3 {
+     color: #e09f3e;
+ }
+ 
+ .color4 {
+     color: #9e2a2b;
+ }
+ 
+ .color5 {
+     color: #540b0e;
+ }
+ 
+ .background-color1 {
+     background-color: #335c67;
+ }
+ 
+ .background-color2 {
+     background-color: #fff3b0;
+ }
+ 
+ .background-color3 {
+     background-color: #e09f3e;
+ }
+ 
+ .background-color4 {
+     background-color: #9e2a2b;
+ }
+ 
+ .background-color5 {
+     background-color: #540b0e;
+ }
+ 
+ .navbar-custom {
+     font-weight: 700;
+     font-size: large;
+ }
+ 
+ .navbar-brand-name {
+     font-size: xx-large;
+     font-weight: bold;
+     font-family: cursive;
+     font-style: italic;
+     color: #540b0e;
+     margin-right: 20px;
+ }
