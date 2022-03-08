@@ -1,0 +1,18 @@
+<%= render 'products/category_navbar'%>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="display-3 mt-4">Platos Principales</h1>
+      <% @products.each do |product|%>
+        <div class="card" style="width: 30rem;">
+          <img src=<%=product.photo_url%> class="card-img-top" alt=<%= product.name%>>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.name%></h5>
+            <p class="card-text"><%= product.description%></p>
+            <a  class="btn btn-success float-end"><%= number_to_currency(product.price, :unit => "CLP", precision: 0)%></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
