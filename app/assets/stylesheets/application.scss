@@ -5,6 +5,7 @@
  
  // Custom bootstrap variables must be set or imported *before* bootstrap.
  @import "bootstrap";
+ @import "font-awesome";
  .brand-logo {
      height: 50%;
      width: auto;
@@ -69,6 +70,12 @@
      color: #540b0e;
  }
  
+ .dropdown-username {
+     text-decoration: none;
+     text-align: center;
+     font-weight: 700;
+ }
+ 
  .footer {
      position: absolute;
      bottom: 0;
@@ -76,4 +83,9 @@
      height: 60px;
      background: #e09f3e;
      border-top: 3px solid #e09f3e;
+ }
+ 
+ .form-label {
+     font-weight: 600;
+     font-size: large;
  }

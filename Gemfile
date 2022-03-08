@@ -59,3 +59,11 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'jquery-rails'
 
 gem 'devise'
+
+gem "font-awesome-rails"
+
+gem 'pry', '~> 0.13.1'
+
+gem 'allow_numeric'
+
+gem 'rails-i18n', '~> 6.0'
