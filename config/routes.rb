@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get :platos_principales
+      get :entradas
+      get :postres
     end
   end
 
