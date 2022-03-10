@@ -13,6 +13,12 @@ class ProductsController < ApplicationController
         end
     end
 
+    def destroy
+        @product = Product.find(params[:id])
+        @product.destroy
+        redirect_to products_path
+    end
+
     def entradas
         @products = Product.where(category: "Entrada")
     end
@@ -27,7 +33,7 @@ class ProductsController < ApplicationController
 
     private
     def create_params
-      params.require(:product).permit(:name, :category, :price, :description)
+      params.require(:product).permit(:name, :category, :price, :description, :photo_url)
     end
 
 end

@@ -23,6 +23,19 @@
             <div class="card-body">
               <h5 class="card-title"><%= product.name%></h5>
               <p class="card-text"><%= product.description%></p>
+              <% if user_signed_in? && current_user.is_admin? %>
+                <a><%= button_to 'Eliminar', product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger float-start" %></a>
+                <a> 
+                  <%= link_to 'Editar', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-secondary ms-3'}  %>
+                    <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <%= render "products/new" %>
+                        </div>
+                      </div>
+                    </div>
+                </a>
+              <% end %>
               <a  class="btn btn-success float-end"><%= number_to_currency(product.price, :unit => "CLP", precision: 0)%></a>
             </div>
         </div>
