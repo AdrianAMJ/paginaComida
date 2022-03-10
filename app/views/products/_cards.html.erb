@@ -1,14 +1,29 @@
 <div class="container">
   <div class="row">
-    <h1 class="display-3 mt-4"> <%= title %> </h1>
+    <h1 class="display-3 mt-4"> <%= title %> 
+    
+    <% if user_signed_in?%>
+      <% if current_user.is_admin?%>
+        <%= link_to 'Añadir Producto', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-lg'}  %>
+        <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <%= render "products/new" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    
+    </h1>
     <% @products.each do |product|%>
     <div class="col-6">
         <div class="card" style="width: 30rem;">
             <img src=<%=product.photo_url%> class="card-img-top" alt=<%= product.name%>>
             <div class="card-body">
-            <h5 class="card-title"><%= product.name%></h5>
-            <p class="card-text"><%= product.description%></p>
-            <a  class="btn btn-success float-end"><%= number_to_currency(product.price, :unit => "CLP", precision: 0)%></a>
+              <h5 class="card-title"><%= product.name%></h5>
+              <p class="card-text"><%= product.description%></p>
+              <a  class="btn btn-success float-end"><%= number_to_currency(product.price, :unit => "CLP", precision: 0)%></a>
             </div>
         </div>
     </div

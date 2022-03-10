@@ -4,7 +4,13 @@ class ProductsController < ApplicationController
     end
 
     def create
-        @product = Product.create(params)
+        @product = Product.new(create_params)
+        if @product.save
+            flash[:notice] = "#{@product.name} añadido."
+            redirect_to products_path
+        else
+            flash[:alert] = "No se pudo crear el Producto."
+        end
     end
 
     def entradas
@@ -20,14 +26,8 @@ class ProductsController < ApplicationController
     end
 
     private
+    def create_params
+      params.require(:product).permit(:name, :category, :price, :description)
+    end
 
-    def product_params
-        params.require(:assign).permit(
-          :name,
-          :description,
-          :category,
-          :price,
-          :photo_url,
-        )
-      end
 end

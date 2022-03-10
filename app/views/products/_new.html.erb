@@ -1,0 +1,36 @@
+<div class="modal-header background-color3">
+  <h4 class="modal-title" id="myModalLabel">Añadir Producto</h4>
+</div>
+<%= form_for :product  do |f|%>
+  <div class="modal-body background-color2">
+    <div>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :category %><br>
+      <%= f.text_field :category %>
+    </div>
+
+    <div>
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </div>
+
+    <div>
+      <%= f.label :price %><br>
+      <%= f.text_field :price %>
+    </div>
+
+    <div>
+      <%= f.label :photo_url %><br>
+      <%= f.text_field :photo_url %>
+    </div>
+
+  </div>
+
+  <div class="modal-footer background-color3">
+    <%= f.submit "Añadir Producto", class: "btn btn-warning" %>
+  </div>
+<% end %>
