@@ -4,7 +4,7 @@
     
     <% if user_signed_in?%>
       <% if current_user.is_admin?%>
-        <%= link_to 'Añadir Producto', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-lg'}  %>
+        <%= link_to 'Añadir Producto', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-lg float-end'}  %>
         <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -19,7 +19,7 @@
     <% @products.each do |product|%>
     <div class="col-6">
         <div class="card" style="width: 30rem;">
-            <img src=<%=product.photo_url%> class="card-img-top" alt=<%= product.name%>>
+            <img src=<%=product.photo_url%> class="card-img-top" product.name%>
             <div class="card-body">
               <h5 class="card-title"><%= product.name%></h5>
               <p class="card-text"><%= product.description%></p>
