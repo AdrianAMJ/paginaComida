@@ -24,3 +24,25 @@
     height: 15vw;
     object-fit: contain;
 }
+
+.boton-eliminar {
+    position: absolute;
+    bottom: 8px;
+    left: 15px
+}
+
+.boton-editar {
+    position: absolute;
+    bottom: 8px;
+    left: 100px;
+}
+
+.boton-precio {
+    position: absolute;
+    bottom: 8px;
+    right: 15px;
+}
+
+.ventana-modal {
+    width: 100%;
+}

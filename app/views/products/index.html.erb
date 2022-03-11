@@ -1,2 +1,4 @@
 <%= render 'products/category_navbar'%>
+<h2 class="mt-3", style="color: green"> <%= flash[:success] %> </h2>
+<h2 class="mt-3" style="color: red"> <%= flash[:error] %> </h2>
 <%= render 'products/cards', title: "Productos" %>

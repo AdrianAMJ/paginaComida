@@ -6,11 +6,11 @@ class ProductsController < ApplicationController
     def create
         @product = Product.new(create_params)
         if @product.save
-            flash[:notice] = "#{@product.name} añadido."
-            redirect_to products_path
+            flash[:success] = "Producto creado con exito."
         else
-            flash[:alert] = "No se pudo crear el Producto."
+            flash[:error] = "No se pudo crear el producto, porfavor intente denuevo."
         end
+        redirect_to products_path
     end
 
     def destroy

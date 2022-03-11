@@ -1,45 +1,47 @@
-<div class="container">
-  <div class="row">
-    <h1 class="display-3 mt-4"> <%= title %> 
-    
-    <% if user_signed_in?%>
-      <% if current_user.is_admin?%>
-        <%= link_to 'Añadir Producto', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-lg float-end'}  %>
+  <div class="container">
+    <h1 class="display-3 mt-4"> 
+      <%= title %>  
+      <% if user_signed_in? && current_user.is_admin?%>
+        <%= link_to 'Añadir Producto', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-lg float-end '}  %>
         <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <%= render "products/new" %>
             </div>
           </div>
         </div>
       <% end %>
-    <% end %>
-    
     </h1>
+  </div>
+
+<div class="container-fluid">
+  <div class="row justify-content-start">
     <% @products.each do |product|%>
-    <div class="col-6">
-        <div class="card" style="width: 30rem;">
+    <div class="col">
+        <div class="card mb-4 me-4" style="width: 28rem;">
             <img src=<%=product.photo_url%> class="card-img-top" product.name%>
             <div class="card-body">
               <h5 class="card-title"><%= product.name%></h5>
               <p class="card-text"><%= product.description%></p>
-              <% if user_signed_in? && current_user.is_admin? %>
-                <a><%= button_to 'Eliminar', product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger float-start" %></a>
-                <a> 
-                  <%= link_to 'Editar', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-secondary ms-3'}  %>
-                    <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <%= render "products/new" %>
+              <div class="botones mt-5">
+                <% if user_signed_in? && current_user.is_admin? %>
+                  <a><%= button_to 'Eliminar', product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger float-start boton-eliminar" %></a>
+                  <a> 
+                    <%= link_to 'Editar', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-secondary ms-3 boton-editar'}  %>
+                      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <%= render "products/new" %>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                </a>
-              <% end %>
-              <a  class="btn btn-success float-end"><%= number_to_currency(product.price, :unit => "CLP", precision: 0)%></a>
+                  </a>
+                <% end %>
+                <a  class="btn btn-success float-end boton-precio"><%= number_to_currency(product.price, :unit => "CLP", precision: 0)%></a>
+              </div>
             </div>
         </div>
-    </div
+    </div>
     <% end %>
   </div>
 </div>
