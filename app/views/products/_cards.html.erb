@@ -1,6 +1,6 @@
   <div class="container">
-    <h1 class="display-3 mt-4"> 
-      <%= title %>  
+    <div>
+      <span class="display-3 mt-4 "> <%= title %> </span>
       <% if user_signed_in? && current_user.is_admin?%>
         <%= link_to 'Añadir Producto', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-lg float-end '}  %>
         <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -11,7 +11,7 @@
           </div>
         </div>
       <% end %>
-    </h1>
+    </div>
   </div>
 
 <div class="container-fluid">
