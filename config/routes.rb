@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :products do
+      put :update, to: 'products#update', as: :update
     collection do
       get :platos_principales
       get :entradas

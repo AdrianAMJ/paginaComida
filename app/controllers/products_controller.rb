@@ -13,6 +13,18 @@ class ProductsController < ApplicationController
         redirect_to products_path
     end
 
+    def update
+        @product = Product.find(params[:product_id])
+        @product.update(create_params)
+
+        if @product.save
+            flash[:success] = "Producto actualizado con exito"
+            redirect_to products_path
+        else
+            flash[:error] = "No se pudo actualizar el producto, porfavor intente denuevo."
+        end
+    end
+
     def destroy
         @product = Product.find(params[:id])
         @product.destroy
@@ -35,5 +47,4 @@ class ProductsController < ApplicationController
     def create_params
       params.require(:product).permit(:name, :category, :price, :description, :photo_url)
     end
-
 end
