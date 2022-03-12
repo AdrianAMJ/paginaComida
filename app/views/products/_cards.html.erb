@@ -1,16 +1,21 @@
   <div class="container">
-    <div>
-      <span class="display-3 mt-4 "> <%= title %> </span>
-      <% if user_signed_in? && current_user.is_admin?%>
-        <%= link_to 'Añadir Producto', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-lg float-end '}  %>
-        <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <%= render "products/new" %>
+    <div class="row mb-3">
+      <div class="col">
+        <span class="display-3 mt-4"> <%= title %> </span>
+      </div>
+
+      <div class="col">
+        <% if user_signed_in? && current_user.is_admin?%>
+          <%= link_to 'Añadir Producto', new_product_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-warning btn-lg float-end'}  %>
+          <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <%= render "products/new" %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 
@@ -27,8 +32,8 @@
                 <% if user_signed_in? && current_user.is_admin? %>
                   <a><%= button_to 'Eliminar', product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger float-start boton-eliminar" %></a>
                   <a> 
-                    <%= link_to 'Editar', product_update_path(product.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit', class: 'btn btn-secondary ms-3 boton-editar'}  %>
-                      <div id="modal-edit" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <%= link_to 'Editar', product_update_path(product.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => "#modal-edit-#{product.id}", class: 'btn btn-secondary ms-3 boton-editar'}  %>
+                      <div id="modal-edit-<%= product.id %>" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <%= render "products/edit", product: product %>
