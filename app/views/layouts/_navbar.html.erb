@@ -29,6 +29,8 @@
           <% if user_signed_in? %>
             <%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
             <%= link_to "Editar Perfil", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Mis Direcciones", user_addresses_path(current_user.id), class: "dropdown-item" %>
+
           <% else %>
             <%= link_to "Registrarse", new_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Iniciar Sesión", new_user_session_path, class: "dropdown-item" %>

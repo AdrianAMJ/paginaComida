@@ -1,0 +1,24 @@
+<div class="container">
+    <h1 class="display-3 mb-3 mt-4">Mis Direcciones</h1>
+
+    <% @addresses.each do |address| %>
+        <div class="row">
+            <div class="col-6">
+                <span> Dirección</span>
+                <%= address.direccion%>
+            </div>
+
+            <div class="col-2">
+                <span> Oficina</span>
+                <%= address.direccion%>
+            </div>
+
+            <div class="col-4">
+                <span> Comuna</span>
+                <%= address.direccion%>
+            </div>
+
+        </div>
+    <% end %>
+
+</div>
