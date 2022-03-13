@@ -19,6 +19,20 @@ class AddressesController < ApplicationController
     redirect_to user_addresses_path(current_user.id)
   end
 
+  def edit
+    if user_signed_in? && current_user.id == params[:user_id].to_i
+      @address = Address.find(params[:id])
+      if @address.update(create_params)
+        flash[:success] = "Se ha actualizado con exito la dirección."
+      else
+        flash[:error] = "No se pudo actualizar la dirección, porfavor intente denuevo."
+      end
+      redirect_to user_addresses_path(current_user.id)
+    else
+      flash[:error] = "Debes haber iniciado sesión"
+      redirect_to products_path
+    end
+  end
   def destroy
     if user_signed_in? && current_user.id == params[:user_id].to_i
       @address = Address.find(params[:id])

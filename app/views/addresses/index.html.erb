@@ -24,7 +24,17 @@
             <%= button_to user_address_path(id: address.id), method: :delete, class: "border-0 ms-0 me-2" do %>
               <span class="btn btn-danger border-0"> <%= fa_icon('trash')%></span> 
             <% end %>
-            <span class="btn btn-secondary" ><%= fa_icon('pencil') %> </span>
+            
+            <%= link_to edit_user_address_path(id: address.id, user_id: current_user.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => "#modal-edit-#{address.id}"} do  %>
+              <span class="btn btn-secondary" ><%= fa_icon('pencil') %> </span>
+            <% end %>
+            <div id="modal-edit-<%= address.id %>" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <%= render 'addresses/edit', address: address %>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
       <% end %>
