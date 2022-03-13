@@ -1,0 +1,24 @@
+<%= form_for :address, url: new_user_address_path(current_user.id), method: :get do |f| %>
+    <div class="row">
+        <div class="col-8 mt-3">
+        <%= f.label :direccion, class: "form-label" %><br>
+        <%= f.text_field :direccion, class: "form-control" %>
+        </div>
+
+        <div class=" col-4 mt-3">
+            <%= f.label :oficina, class: "form-label" %><br>
+            <%= f.text_field :oficina, class: "form-control" %>
+        </div>
+        
+
+        <div class="col mt-3">
+        <%= f.label :comuna, class: "form-label" %><br>
+        <%= f.select :comuna, ['Las Condes', 'La Reina', 'Providencia', 'Vitacura', 'Ñuñoa'], {}, class: "form-select" %>
+        </div>
+        
+        <div class="mt-3">
+            <%= f.submit "Añadir Producto", class: "btn btn-warning float-end" %>
+        </div>
+    </div>
+
+<% end %>

@@ -1,24 +1,41 @@
 <div class="container">
-    <h1 class="display-3 mb-3 mt-4">Mis Direcciones</h1>
+<div class="container">
+    <h2 class="mt-3", style="color: green"> <%= flash[:success] %> </h2>
+    <h2 class="mt-3" style="color: red"> <%= flash[:error] %> </h2>
+</div>
+  <h1 class="display-3 mb-3 mt-4">Mis Direcciones</h1>
+  <% if !@addresses.empty?%>
+    <table class="table table-bordered border border-dark background-color">
+      <thead>
+        <tr>
+          <th scope="col" class="h6" >Dirección</th>
+          <th scope="col" class="h6">Oficina/Dpto</th>
+          <th scope="col" class="h6">Comuna</th>
+          <th scope="col" class="h6"> <span class="d-flex justify-content-center"><%= fa_icon(:gear) %></span></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @addresses.each do |address| %>
+        <tr>
+          <td class="h6 align-middle"> <%= address.direccion %> </th>
+          <td class="h6 align-middle"> <%= address.oficina %> </td>
+          <td class="h6 align-middle"> <%= address.comuna %> </td>
+          <td class="d-flex align-middle  justify-content-center border-0">  
+            <%= button_to user_address_path(id: address.id), method: :delete, class: "border-0 ms-0 me-2" do %>
+              <span class="btn btn-danger border-0"> <%= fa_icon('trash')%></span> 
+            <% end %>
+            <span class="btn btn-secondary" ><%= fa_icon('pencil') %> </span>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
 
-    <% @addresses.each do |address| %>
-        <div class="row">
-            <div class="col-6">
-                <span> Dirección</span>
-                <%= address.direccion%>
-            </div>
-
-            <div class="col-2">
-                <span> Oficina</span>
-                <%= address.direccion%>
-            </div>
-
-            <div class="col-4">
-                <span> Comuna</span>
-                <%= address.direccion%>
-            </div>
-
-        </div>
-    <% end %>
-
+  <div class="card background-color3" style="width: 100%;">
+    <div class="card-body">
+      <h4 class="display-6">Añadir Dirección</h4>
+      <%= render 'addresses/new' %>
+    </div>
+  </div>
 </div>
