@@ -19,7 +19,7 @@
         <tr>
           <td class="h6 align-middle"> <%= address.direccion %> </th>
           <td class="h6 align-middle"> <%= address.oficina %> </td>
-          <td class="h6 align-middle"> <%= address.comuna %> </td>
+          <td class="h6 align-middle"> <%= t(address.comuna) %> </td>
           <td class="d-flex align-middle  justify-content-center border-0">  
             <%= button_to user_address_path(id: address.id), method: :delete, class: "border-0 ms-0 me-2" do %>
               <span class="btn btn-danger border-0"> <%= fa_icon('trash')%></span> 

@@ -1,0 +1,17 @@
+es:
+  activerecord:
+    models:
+      address:
+        one: Dirección
+        other: Direcciones
+    attributes:
+      address:
+        direccion: Dirección 
+        oficina: Oficina/Dpto/Casa
+        comuna: Comuna
+        comuna_list:
+          las_condes: Las Condes
+          providencia: Providencia
+          nunoa: Ñuñoa
+          la_reina: La Reina
+          vitacura: Vitacura
