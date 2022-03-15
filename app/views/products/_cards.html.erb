@@ -30,17 +30,19 @@
               <p class="card-text"><%= product.description%></p>
               <div class="botones mt-5">
                 <% if user_signed_in? && current_user.is_admin? %>
-                  <a><%= button_to 'Eliminar', product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger float-start boton-eliminar" %></a>
-                  <a> 
-                    <%= link_to 'Editar', product_update_path(product.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => "#modal-edit-#{product.id}", class: 'btn btn-secondary ms-3 boton-editar'}  %>
-                      <div id="modal-edit-<%= product.id %>" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <%= render "products/edit", product: product %>
-                          </div>
-                        </div>
+                  <%= button_to product_path(product.id), method: :delete, class: "btn btn-danger float-start boton-eliminar" do %> 
+                    <%= fa_icon('trash') %>
+                  <% end %>
+                  <%= link_to product_update_path(product.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => "#modal-edit-#{product.id}", class: 'btn btn-secondary boton-editar'} do  %>
+                    <%= fa_icon('pencil')%>
+                  <% end %>
+                  <div id="modal-edit-<%= product.id %>" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <%= render "products/edit", product: product %>
                       </div>
-                  </a>
+                    </div>
+                  </div>
                 <% end %>
                 <a  class="btn btn-success float-end boton-precio"><%= number_to_currency(product.price, :unit => "CLP", precision: 0)%></a>
               </div>
