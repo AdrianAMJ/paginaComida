@@ -1,0 +1,2 @@
+class ItemCarrito < ApplicationRecord
+end

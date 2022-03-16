@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :addresses
+    resources :carritos
   end
 
 end

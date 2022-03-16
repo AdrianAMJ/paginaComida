@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_12_193215) do
+ActiveRecord::Schema.define(version: 2022_03_16_013901) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -20,6 +20,26 @@ ActiveRecord::Schema.define(version: 2022_03_12_193215) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "carritos", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "address_id"
+    t.integer "total_cost", default: 0, null: false
+    t.string "descuento"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_carritos_on_address_id"
+    t.index ["user_id"], name: "index_carritos_on_user_id"
+  end
+
+  create_table "item_carritos", force: :cascade do |t|
+    t.integer "carrito_id"
+    t.integer "product_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["carrito_id"], name: "index_item_carritos_on_carrito_id"
+    t.index ["product_id"], name: "index_item_carritos_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -48,4 +68,8 @@ ActiveRecord::Schema.define(version: 2022_03_12_193215) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "carritos", "addresses"
+  add_foreign_key "carritos", "users"
+  add_foreign_key "item_carritos", "carritos"
+  add_foreign_key "item_carritos", "products"
 end

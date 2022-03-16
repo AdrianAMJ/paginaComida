@@ -21,6 +21,19 @@
       </ul>
 
       <ul class="navbar-nav ms-auto me-2">
+        <li class="nav-item">
+          <% if user_signed_in? %>
+            <%= link_to user_carritos_path(current_user.id), class: "btn" do%>
+              <%= fa_icon('shopping-cart lg') %>
+            <% end %>
+          <% else %>
+            <% flash[:error] = "Debes iniciar sesión." %>
+            <%= link_to products_path, class: "btn" do%>
+              <%= fa_icon('shopping-cart lg') %>
+            <% end %>
+          <% end %>
+        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= fa_icon('user-circle lg') %> <%= user_signed_in? ? current_user.name :  "Mi Cuenta" %>
