@@ -21,5 +21,4 @@ class User < ApplicationRecord
       Carrito.find_by(user_id: id)
     end
   end
-
 end

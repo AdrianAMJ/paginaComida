@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :addresses
-    resources :carritos
+    resources :carritos do
+      get '/agregar_item', to: 'carritos#agregar_item', as: 'agregar_item'
+    end
   end
 
 end

@@ -9,9 +9,9 @@ class Carrito < ApplicationRecord
         ItemCarrito.where(carrito_id: id).all
     end
 
-    def agregar_producto
-        ItemCarrito.create(carrito: self, product_id: params[:product_id])
-        self.costo_total += Product.find(params[:product_id]).price
+    def agregar_producto product_id
+        ItemCarrito.create(carrito: self, product_id: product_id)
+        self.total_cost += Product.find(product_id).price
     end
 end
 
