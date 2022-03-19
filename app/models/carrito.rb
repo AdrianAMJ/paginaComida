@@ -12,6 +12,7 @@ class Carrito < ApplicationRecord
     def agregar_producto product_id
         ItemCarrito.create(carrito: self, product_id: product_id)
         self.total_cost += Product.find(product_id).price
+        self.save
     end
 end
 

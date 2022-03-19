@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :addresses
     resources :carritos do
       get '/agregar_item', to: 'carritos#agregar_item', as: 'agregar_item'
+      get '/quitar_item', to: 'carritos#quitar_item', as: 'quitar_item'
     end
   end
 
