@@ -1,57 +1,61 @@
 
 <div class="container">
   <h1 class="display-3 mb-3 mt-4">Mi Carrito</h1>
+  <% if !@items.empty?%>
+    <div class="row">
+      <div class="col-md-6">
+        <% @items.each do |item| %>
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-4">
+                <img src= <%= item.product.photo_url%> class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-8">
+                <div class="card-body">
+                  <h5 class="card-title"> <%= item.product.name %></h5>
+                  <p> <%= "Total: #{number_to_currency(@carrito.items.where(product_id: item.product_id).count * item.product.price, :unit => "CLP", precision: 0)}"%> </p>
 
-  <div class="row">
-    <div class="col-md-6">
-      <% @items.each do |item| %>
-        <div class="card mb-3" style="max-width: 540px;">
-          <div class="row g-0">
-            <div class="col-4">
-              <img src= <%= item.product.photo_url%> class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-8">
-              <div class="card-body">
-                <h5 class="card-title"> <%= item.product.name %></h5>
-                <p> <%= "Total: #{number_to_currency(@carrito.items.where(product_id: item.product_id).count * item.product.price, :unit => "CLP", precision: 0)}"%> </p>
-
-                <span> <%= "Cantidad: #{@carrito.items.where(product_id: item.product_id).count}" %> </span>
-                <div class="float-end">
-                  <%= link_to user_carrito_quitar_item_path(carrito_id: current_user.carrito_compras.id, user_id: current_user.id, product_id: item.product.id),
-                  class: 'btn btn-sm btn-secondary' do%>
-                    <%= fa_icon("minus")%>
-                  <% end %>
-                  <%= link_to user_carrito_agregar_item_path(carrito_id: current_user.carrito_compras.id, user_id: current_user.id, product_id: item.product.id),
-                  class: 'btn btn-sm btn-secondary' do%>
-                    <%= fa_icon("plus")%>
-                  <% end %>
+                  <span> <%= "Cantidad: #{@carrito.items.where(product_id: item.product_id).count}" %> </span>
+                  <div class="float-end">
+                    <%= link_to user_carrito_quitar_item_path(carrito_id: current_user.carrito_compras.id, user_id: current_user.id, product_id: item.product.id),
+                    class: 'btn btn-sm btn-secondary' do%>
+                      <%= fa_icon("minus")%>
+                    <% end %>
+                    <%= link_to user_carrito_agregar_item_path(carrito_id: current_user.carrito_compras.id, user_id: current_user.id, product_id: item.product.id),
+                    class: 'btn btn-sm btn-secondary' do%>
+                      <%= fa_icon("plus")%>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
 
-    <div class="col-md-6 float-start">
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="card-body">
-          <div class="row align-items-center">
-            <div class="col-6">
-              <b class="card-title h4">Costo Total:</b>
-            </div>
+      <div class="col-md-6 float-start">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-6">
+                <b class="card-title h4">Costo Total:</b>
+              </div>
 
-            <div class="col-6">
-              <span class="float-end h6 me-2"><%= number_to_currency(@carrito.total_cost, :unit => "CLP", precision: 0) %></span><br/>
-            </div>
-            
-            <div class="col-12">
-              <div class="btn btn-lg btn-primary float-end mt-3 w-100"> Hacer Pedido </div>
+              <div class="col-6">
+                <span class="float-end h6 me-2"><%= number_to_currency(@carrito.total_cost, :unit => "CLP", precision: 0) %></span><br/>
+              </div>
+              
+              <div class="col-12">
+                <div class="btn btn-lg btn-primary float-end mt-3 w-100"> Hacer Pedido </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </div>
+    </div>
+  <% else %>
+    <span class="display-6"> No tienes nada en tu carrito </span>
+    <%= fa_icon('frown-o 2x')%>
+  <% end %>
 </div>
